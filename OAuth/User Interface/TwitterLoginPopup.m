@@ -73,7 +73,6 @@
 										selector:@selector(synchronousAuthorizeTwitterTokenWithVerifier:)
 										object:oauth_verifier];
 	[queue addOperation:operation];
-	[operation release];
     
 }
 
@@ -106,7 +105,6 @@
             UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
                                            initWithTitle:@"Enter PIN" style:UIBarButtonItemStylePlain target:nil action:nil];
             self.navigationItem.backBarButtonItem = backButton;
-            [backButton release];
             webViewController.managingVc = self;
             
         }
@@ -130,7 +128,6 @@
                                                                    target:self
                                                                    action:@selector(seePinAgain)];
         self.navigationItem.rightBarButtonItem = forward;
-        [forward release];
         willBeEditingPin = YES;
         
     }
@@ -200,7 +197,6 @@
 										  target:self
 										  action:@selector(cancel)];	
 	self.navigationItem.leftBarButtonItem = cancelButton;
-	[cancelButton release];
     
 	queue = [[NSOperationQueue alloc] init];
 	
@@ -244,7 +240,6 @@
 	// e.g. self.myOutlet = nil;
 	
 	self.navigationController.delegate = nil;
-	[queue release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -277,14 +272,7 @@
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [oAuthCallbackUrl release];
 	
-    [queue release];
-	[webView release];
-	[webViewController release];
-	[oAuth release];
-	[pinField release];
-    [super dealloc];
 }
 
 #pragma mark -
@@ -299,7 +287,6 @@
 										object:callbackUrl];
 	
 	[queue addOperation:operation];
-	[operation release];
 }
 
 - (void) focusPinField {

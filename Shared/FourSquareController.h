@@ -14,10 +14,10 @@
 @interface FoursquareController : UIViewController <oAuthLoginPopupDelegate> {
     FoursquareLoginPopup *loginPopup;
 }
-@property (retain, nonatomic) IBOutlet UIButton *seeCheckinsButton;
-@property (retain, nonatomic) IBOutlet UITextView *checkinsField;
+@property (strong, nonatomic) IBOutlet UIButton *seeCheckinsButton;
+@property (strong, nonatomic) IBOutlet UITextView *checkinsField;
 - (IBAction)didTapSeeCheckins:(id)sender;
 
-@property (retain, nonatomic) OAuth *oAuth4sq;
+@property (strong, nonatomic) OAuth *oAuth4sq;
 
 @end

@@ -15,7 +15,7 @@
     UIWebView *webView;
 }
 
-@property (assign) id<oAuthLoginPopupDelegate> delegate;
-@property (retain, nonatomic) OAuth *oAuth;
+@property (unsafe_unretained) id<oAuthLoginPopupDelegate> delegate;
+@property (strong, nonatomic) OAuth *oAuth;
 
 @end

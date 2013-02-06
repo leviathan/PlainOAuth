@@ -13,6 +13,6 @@
     UIActivityIndicatorView *activityIndicator;
 }
 
-@property (nonatomic, readonly, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, readonly, strong) UIActivityIndicatorView *activityIndicator;
 
 @end

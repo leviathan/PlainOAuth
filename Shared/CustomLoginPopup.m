@@ -64,10 +64,6 @@
 }
 
 
-- (void)dealloc {
-    [activityIndicator release];
-    [super dealloc];
-}
 
 
 @end

@@ -31,10 +31,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void) dealloc {
-    [oAuth release];
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle
 
@@ -59,10 +55,9 @@
                                      target:self
                                      action:@selector(cancel)];	
 	self.navigationItem.leftBarButtonItem = cancelButton;
-	[cancelButton release];
     
     CGRect appFrame = [UIScreen mainScreen].applicationFrame;    
-    webView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,appFrame.size.width,appFrame.size.height)] autorelease];
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,appFrame.size.width,appFrame.size.height)];
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     webView.delegate = self;
     [self.view addSubview:webView];

@@ -66,7 +66,6 @@
                                                                   target:self
                                                                   action:@selector(logout)];
         self.navigationItem.rightBarButtonItem = logout;
-        [logout release];
         
     } else {
         tweets.text = @"";
@@ -87,7 +86,6 @@
                                                                   target:self
                                                                   action:@selector(login)];
         self.navigationItem.rightBarButtonItem = login;
-        [login release];
         
     }
     
@@ -116,12 +114,6 @@
 }
 
 
-- (void)dealloc {
-    
-    [oAuthTwitter release];
-    
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Button actions
@@ -130,7 +122,6 @@
     
     UIActionSheet *pickFlow = [[UIActionSheet alloc] initWithTitle:@"Select Twitter login flow" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"PIN", @"URL callback", nil];
     [pickFlow showInView:self.view];
-    [pickFlow release];
     
     
 
@@ -206,7 +197,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];
     
     NSLog(@"Got statuses. HTTP result code: %d", [response statusCode]);
     
@@ -225,7 +216,6 @@
     UploadMedia *uploadMedia = [[UploadMedia alloc] initWithNibName:@"UploadMedia" bundle:nil];
     uploadMedia.oAuth = oAuthTwitter;
     [self.navigationController pushViewController:uploadMedia animated:YES];
-    [uploadMedia release];
 }
 
 
@@ -234,12 +224,12 @@
 
 - (void)oAuthLoginPopupDidCancel:(UIViewController *)popup {
     [self dismissModalViewControllerAnimated:YES];        
-    [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
+     loginPopup = nil; // was retained as ivar in "login"
 }
 
 - (void)oAuthLoginPopupDidAuthorize:(UIViewController *)popup {
     [self dismissModalViewControllerAnimated:YES];        
-    [loginPopup release]; loginPopup = nil; // was retained as ivar in "login"
+     loginPopup = nil; // was retained as ivar in "login"
     [oAuthTwitter save];
     [self resetUi];
 }
@@ -310,7 +300,6 @@
     }
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginPopup];
     [self presentModalViewController:nav animated:YES];        
-    [nav release];
 }
 
 - (void)handleOAuthVerifier:(NSString *)oauth_verifier {

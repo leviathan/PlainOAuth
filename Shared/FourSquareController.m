@@ -61,14 +61,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)dealloc {
-    
-    [oAuth4sq release];
-    
-    [seeCheckinsButton release];
-    [checkinsField release];
-    [super dealloc];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -84,7 +76,6 @@
                                                                   target:self
                                                                   action:@selector(logout)];
         self.navigationItem.rightBarButtonItem = logout;
-        [logout release];
         seeCheckinsButton.enabled = YES;
 
     } else {
@@ -93,7 +84,6 @@
                                                                  target:self
                                                                  action:@selector(login)];
         self.navigationItem.rightBarButtonItem = login;
-        [login release];
         
         seeCheckinsButton.enabled = NO;
     }
@@ -114,7 +104,6 @@
     // UIWebView *fourSquareLoginWebview = [[UIWebView alloc] init
 
     if (loginPopup) {
-        [loginPopup release];
         loginPopup = nil;
     }
     
@@ -124,7 +113,6 @@
 
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginPopup];
     [self presentModalViewController:nav animated:YES];
-    [nav release];
     
     
 }
@@ -146,7 +134,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];
     
     NSDictionary *checkins = [responseString JSONValue];
     
@@ -174,13 +162,13 @@
 
 - (void)oAuthLoginPopupDidCancel:(UIViewController *)popup {
     [self dismissModalViewControllerAnimated:YES];        
-    [loginPopup release]; loginPopup = nil;
+     loginPopup = nil;
 
 }
 
 - (void)oAuthLoginPopupDidAuthorize:(UIViewController *)popup {
     [self dismissModalViewControllerAnimated:YES];        
-    [loginPopup release]; loginPopup = nil;
+     loginPopup = nil;
     NSLog(@"oh hai, got the token: %@", oAuth4sq.oauth_token);
     [oAuth4sq save];
     [self resetUi];

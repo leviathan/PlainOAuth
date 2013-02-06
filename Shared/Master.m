@@ -83,15 +83,6 @@
     [self.navigationController pushViewController:foursquareController animated:YES];
 }
 
-- (void)dealloc {
-    [oAuthTwitter release];
-    [oAuth4sq release];
-    [twitterAuthStatus release];
-    [twitterController release];
-    [foursquareController release];
-    [foursquareAuthStatus release];
-    [super dealloc];
-}
 
 
 #pragma mark -

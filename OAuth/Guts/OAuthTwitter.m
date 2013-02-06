@@ -25,11 +25,6 @@
     return self;
 }
 
-- (void) dealloc {
-    [user_id release];
-	[screen_name release];
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Twitter convenience methods
@@ -79,7 +74,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];    
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];    
 	
 	if ([response statusCode] != 200) {
 		if ([self.delegate respondsToSelector:@selector(requestTwitterTokenDidFail:)]) {
@@ -128,7 +123,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];    
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];    
 	
 	if ([response statusCode] != 200) {
         

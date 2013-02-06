@@ -57,11 +57,6 @@
 }
 
 
-- (void)dealloc {
-    [popover release];
-    [oAuth release];
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Button actions
@@ -84,7 +79,6 @@
         [self presentModalViewController:imagePicker animated:YES];        
     }
     
-    [imagePicker release];
     
 }
 
@@ -149,7 +143,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];
     
     if (error) {
         NSLog(@"Error from NSURLConnection: %@", error);        
@@ -199,7 +193,7 @@
     NSHTTPURLResponse *response;
     NSError *error = nil;
     
-    NSString *responseString = [[[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error] encoding:NSUTF8StringEncoding] autorelease];
+    NSString *responseString = [[NSString alloc] initWithData:[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error] encoding:NSUTF8StringEncoding];
     
     if (error) {
         NSLog(@"Error from NSURLConnection: %@", error);        

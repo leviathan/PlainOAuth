@@ -13,6 +13,6 @@
     UIViewController *managingVc;
 }
 
-@property (nonatomic, retain) UIViewController *managingVc;
+@property (nonatomic, strong) UIViewController *managingVc;
 
 @end

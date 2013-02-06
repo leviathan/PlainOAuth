@@ -20,8 +20,8 @@
 - (IBAction)didTapTwitter:(id)sender;
 - (IBAction)didTapFoursquare:(id)sender;
 
-@property (retain, nonatomic) IBOutlet UILabel *twitterAuthStatus;
-@property (retain, nonatomic) IBOutlet UILabel *foursquareAuthStatus;
+@property (strong, nonatomic) IBOutlet UILabel *twitterAuthStatus;
+@property (strong, nonatomic) IBOutlet UILabel *foursquareAuthStatus;
 
 - (void) resetUi;
 - (void) handleOAuthVerifier:(NSString *)oauth_verifier;

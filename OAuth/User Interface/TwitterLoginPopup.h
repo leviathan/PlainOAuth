@@ -26,8 +26,8 @@ typedef enum {
     IBOutlet UILabel *typePinBelow;
     IBOutlet UIImageView *signInBullet2;
     
-	id <oAuthLoginPopupDelegate> delegate;
-	id <TwitterLoginUiFeedback> uiDelegate;
+	id <oAuthLoginPopupDelegate> __unsafe_unretained delegate;
+	id <TwitterLoginUiFeedback> __unsafe_unretained uiDelegate;
 	
     TwitterLoginFlowType flowType;
 	
@@ -43,12 +43,12 @@ typedef enum {
     NSString *oAuthCallbackUrl;
 }
 
-@property (assign) id<oAuthLoginPopupDelegate> delegate;
-@property (assign) id<TwitterLoginUiFeedback> uiDelegate;
+@property (unsafe_unretained) id<oAuthLoginPopupDelegate> delegate;
+@property (unsafe_unretained) id<TwitterLoginUiFeedback> uiDelegate;
 
 @property (assign) TwitterLoginFlowType flowType;
 
-@property (nonatomic, retain) OAuthTwitter *oAuth;
+@property (nonatomic, strong) OAuthTwitter *oAuth;
 @property (nonatomic, copy) NSString *oAuthCallbackUrl;
 
 // Call this when receiving the verifier as URL parameter in URL callback flow,

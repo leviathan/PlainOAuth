@@ -26,7 +26,7 @@
 	
 }
 
-@property (retain, nonatomic) OAuthTwitter *oAuthTwitter;
+@property (strong, nonatomic) OAuthTwitter *oAuthTwitter;
 
 - (IBAction)didPressPost:(id)sender;
 - (IBAction)didPressLatestTweets:(id)sender;

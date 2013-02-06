@@ -47,12 +47,6 @@
 }
 
 
-- (void)dealloc {
-	[root release];
-	[nav release];
-    [window release];
-    [super dealloc];
-}
 
 
 @end

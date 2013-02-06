@@ -19,7 +19,7 @@
     OAuth *oAuth;
 }
 
-@property (nonatomic, retain) OAuth *oAuth;
+@property (nonatomic, strong) OAuth *oAuth;
 
 -(IBAction)didPressPickImage:(id)sender;
 -(IBAction)didPressPostImage:(id)sender;

@@ -35,11 +35,6 @@
 }
 
 
-- (void)dealloc {
-    [managingVc release];
-    
-    [super dealloc];
-}
 
 
 @end

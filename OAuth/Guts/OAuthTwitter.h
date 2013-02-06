@@ -17,12 +17,12 @@
     *user_id,
     *screen_name;
     
-    id<OAuthTwitterCallbacks> delegate;
+    id<OAuthTwitterCallbacks> __unsafe_unretained delegate;
 }
 
 @property (copy) NSString *user_id;
 @property (copy) NSString *screen_name;
-@property (assign) id<OAuthTwitterCallbacks> delegate;
+@property (unsafe_unretained) id<OAuthTwitterCallbacks> delegate;
 
 // Twitter convenience methods
 - (void) synchronousRequestTwitterToken;
